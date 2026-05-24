@@ -1,0 +1,8 @@
+# My zsh config
+eval "$(starship init zsh)"
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+alias gs="git status"
+alias ls="eza -l --icons"
+alias cat="batcat"
+
+export PATH="$HOME/bin:$PATH"
