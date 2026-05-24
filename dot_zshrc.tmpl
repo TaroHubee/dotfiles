@@ -3,6 +3,10 @@ eval "$(starship init zsh)"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 alias gs="git status"
 alias ls="eza -l --icons"
+{{ if eq .chezmoi.os "linux" }}
 alias cat="batcat"
+{{ else }}
+alias cat="bat"
+{{ end }}
 
 export PATH="$HOME/bin:$PATH"
