@@ -1,0 +1,21 @@
+syntax on
+set number
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set cursorline
+set autoindent
+
+set hlsearch
+colorscheme desert
+
+nnoremap <Space> :w<CR>
+nnoremap <C-h> :nohl<CR>
+call plug#begin('~/.vim/plugged')
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
+set laststatus=2
+nnoremap <C-p> :Files<CR>
