@@ -10,11 +10,11 @@ if [ "$OS" = "Darwin" ]; then
     echo "Homebrew installing....."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-  brew install fzf eza bat ripgrep starship
+  brew install fzf eza bat ripgrep starship tmux
 elif [ "$OS" = "Linux" ]; then
   # Linux / WSL
   sudo apt update
-  sudo apt install -y fzf eza bat ripgrep
+  sudo apt install -y fzf eza bat ripgrep tmux
   curl -sS https://starship.rs/install.sh | sh -s -- --yes
 fi
 
