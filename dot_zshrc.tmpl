@@ -1,7 +1,17 @@
 # My zsh config
 export EDITOR=vim
 eval "$(starship init zsh)"
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+# Load fzf integration only when the script files exist on the current OS.
+if command -v brew >/dev/null 2>&1; then
+	FZF_BASE="$(brew --prefix fzf)"
+	[ -f "$FZF_BASE/shell/key-bindings.zsh" ] && source "$FZF_BASE/shell/key-bindings.zsh"
+	[ -f "$FZF_BASE/shell/completion.zsh" ] && source "$FZF_BASE/shell/completion.zsh"
+else
+	[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+	[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+fi
+
 alias gs="git status"
 alias ls="eza -l --icons"
 {{ if eq .chezmoi.os "linux" }}

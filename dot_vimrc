@@ -11,11 +11,13 @@ colorscheme desert
 
 nnoremap <Space> :w<CR>
 nnoremap <C-h> :nohl<CR>
-call plug#begin('~/.vim/plugged')
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-call plug#end()
+if filereadable(expand('~/.vim/autoload/plug.vim'))
+	call plug#begin('~/.vim/plugged')
+	Plug 'itchyny/lightline.vim'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	call plug#end()
+endif
 
 set laststatus=2
 nnoremap <C-p> :Files<CR>
