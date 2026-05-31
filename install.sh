@@ -18,7 +18,7 @@ if [ "$OS" = "Darwin" ]; then
     fi
   fi
 
-  brew install fzf eza bat ripgrep starship tmux chezmoi
+  brew install fzf eza bat ripgrep starship tmux chezmoi vivid
 elif [ "$OS" = "Linux" ]; then
   # Linux / WSL
   sudo apt update
@@ -29,6 +29,17 @@ elif [ "$OS" = "Linux" ]; then
     mkdir -p "$HOME/bin"
     sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/bin"
     export PATH="$HOME/bin:$PATH"
+  fi
+
+  # vivid (LS_COLORS テーマ生成ツール): apt に無ければ cargo で入れる
+  if ! command -v vivid >/dev/null 2>&1; then
+    if sudo apt install -y vivid 2>/dev/null; then
+      :
+    elif command -v cargo >/dev/null 2>&1; then
+      cargo install vivid
+    else
+      echo "vivid not installed (apt/cargo unavailable). Skipping."
+    fi
   fi
 fi
 
